@@ -1,0 +1,274 @@
+
+use ecommerce_db;
+CREATE TABLE products (
+    product_id INT PRIMARY KEY,
+    product_name VARCHAR(100),
+    category VARCHAR(50),
+    brand VARCHAR(50),
+    price DECIMAL(10,2),
+    quantity INT,
+    city VARCHAR(50),
+    status VARCHAR(20)
+);
+
+desc products;
+
+show tables;
+DELETE FROM products
+WHERE product_id >= 201;
+INSERT INTO products
+VALUES
+(201, 'Galaxy M55', 'Mobile', 'Samsung', 32000, 15, 'Pune', 'Available'),
+(202, 'iPhone 15', 'Mobile', 'Apple', 65000, 8, 'Mumbai', 'Available'),
+(203, 'Moto Edge 50', 'Mobile', 'Motorola', 28000, 20, 'Pune', 'Available'),
+(204, 'Inspiron 15', 'Laptop', 'Dell', 58000, 6, 'Nashik', 'Available'),
+(205, 'IdeaPad Slim 3', 'Laptop', 'Lenovo', 45000, 12, 'Mumbai', 'Available'),
+(206, 'Galaxy Watch 6', 'Watch', 'Samsung', 22000, 4, 'Pune', 'Out of Stock'),
+(207, 'Apple Watch SE', 'Watch', 'Apple', 30000, 10, 'Mumbai', 'Available'),
+(208, 'Redmi Pad', 'Tablet', 'Xiaomi', 24000, 18, 'Pune', 'Available'),
+(209, 'OnePlus Pad', 'Tablet', 'OnePlus', 35000, 5, 'Nashik', 'Available'),
+(210, 'Bluetooth Speaker', 'Accessories', 'JBL', 7000, 25, 'Mumbai', 'Available');
+select * from products;
+
+SELECT product_name
+FROM products;
+
+select price
+from products;
+
+select price,product_name
+from products;
+
+select price,product_name,brand
+from products;
+ 
+ 
+ select * from products
+ where city ="pune";
+ 
+ select * from products
+ where city ="mumbai";
+ 
+ SELECT *
+FROM products
+WHERE category = 'Laptop';
+
+select * from products
+where price >30000;
+
+select * from products
+where price >350000;
+
+SELECT *
+FROM products
+WHERE price >= 45000;
+
+SELECT *
+FROM products
+WHERE price <= 30000;
+
+SELECT *
+FROM products
+WHERE quantity > 10;
+
+SELECT *
+FROM products
+WHERE quantity < 10;
+
+
+select * from products
+where city ="pune"
+and category ="mobile" ;
+
+-- Task 31: Pune AND Mobile
+SELECT *
+FROM products
+WHERE city = 'Pune'
+AND category = 'Mobile';
+
+
+-- Task 32: Mumbai AND Available
+SELECT *
+FROM products
+WHERE city = 'Mumbai'
+AND status = 'Available';
+
+
+-- Task 33: Price > 30000 AND quantity > 5
+SELECT *
+FROM products
+WHERE price > 30000
+AND quantity > 5;
+
+
+-- Task 34: Price >= 30000 AND price <= 60000
+SELECT *
+FROM products
+WHERE price >= 30000
+AND price <= 60000;
+
+
+-- Task 35: Pune OR Mumbai
+SELECT *
+FROM products
+WHERE city = 'Pune'
+OR city = 'Mumbai';
+
+
+-- Task 36: Mobile OR Laptop
+SELECT *
+FROM products
+WHERE category = 'Mobile'
+OR category = 'Laptop';
+
+
+-- Task 37: Quantity < 10 OR price > 50000
+SELECT *
+FROM products
+WHERE quantity < 10
+OR price > 50000;
+
+
+-- Task 38: Mobile AND price > 30000
+SELECT *
+FROM products
+WHERE category = 'Mobile'
+AND price > 30000;
+
+
+-- Task 39: Samsung OR Apple
+SELECT *
+FROM products
+WHERE brand = 'Samsung'
+OR brand = 'Apple';
+
+
+-- Task 40: Pune AND Available AND quantity > 10
+SELECT *
+FROM products
+WHERE city = 'Pune'
+AND status = 'Available'
+AND quantity > 10;
+
+-- 41. Price BETWEEN 25000 and 50000
+SELECT *
+FROM products
+WHERE price BETWEEN 25000 AND 50000;
+
+
+-- 42. Quantity BETWEEN 5 and 15
+SELECT *
+FROM products
+WHERE quantity BETWEEN 5 AND 15;
+
+
+-- 43. Category IN Mobile, Laptop, Tablet
+SELECT *
+FROM products
+WHERE category IN ('Mobile', 'Laptop', 'Tablet');
+
+
+-- 44. City IN Pune, Mumbai
+SELECT *
+FROM products
+WHERE city IN ('Pune', 'Mumbai');
+
+
+-- 45. Brand NOT Samsung
+SELECT *
+FROM products
+WHERE brand NOT IN ('Samsung');
+
+
+-- 46. Status NOT Out of Stock
+SELECT *
+FROM products
+WHERE status NOT IN ('Out of Stock');
+
+
+-- 47. Price NOT EQUAL TO 30000
+SELECT *
+FROM products
+WHERE price <> 30000;
+
+
+-- 48. Product name starts with Galaxy
+SELECT *
+FROM products
+WHERE product_name LIKE 'Galaxy%';
+
+
+-- 49. Product name contains Pad
+SELECT *
+FROM products
+WHERE product_name LIKE '%Pad%';
+
+
+-- 50. Mobile AND (price > 30000 OR quantity > 15)
+SELECT *
+FROM products
+WHERE category = 'Mobile'
+AND (price > 30000 OR quantity > 15);
+
+
+
+-- 51. Update Galaxy M55 price from 32000 to 34000
+UPDATE products
+SET price = 34000
+WHERE product_name = 'Galaxy M55';
+
+
+-- 52. Update iPhone 15 quantity to 12
+UPDATE products
+SET quantity = 12
+WHERE product_name = 'iPhone 15';
+
+
+-- 53. Change Galaxy Watch 6 status to Available
+UPDATE products
+SET status = 'Available'
+WHERE product_name = 'Galaxy Watch 6';
+
+
+-- 54. Increase price of all Mobile products by 2000
+UPDATE products
+SET price = price + 2000
+WHERE category = 'Mobile';
+
+
+-- 55. Increase quantity of all Pune products by 5
+UPDATE products
+SET quantity = quantity + 5
+WHERE city = 'Pune';
+
+
+-- 56. Set status to Out of Stock where quantity < 5
+UPDATE products
+SET status = 'Out of Stock'
+WHERE quantity < 5;
+
+
+-- 57. Delete product where product_id = 210
+DELETE FROM products
+WHERE product_id = 210;
+
+
+-- 58. Delete products whose price is less than 8000
+DELETE FROM products
+WHERE price < 8000;
+
+
+-- 59. Delete products where status = Out of Stock
+-- AND quantity < 5
+DELETE FROM products
+WHERE status = 'Out of Stock'
+AND quantity < 5;
+
+
+-- 60. Delete Tablet products whose price is greater than 30000
+DELETE FROM products
+WHERE category = 'Tablet'
+AND price > 30000;
+
+ 
+ 
